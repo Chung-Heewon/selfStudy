@@ -119,7 +119,7 @@ public class Loop {
 	for (int i=1; i<=5; i++) {
 		sum = sum+i; //sum+=i
 	}
-	System.out.println("1~100합 : "+sum);
+	System.out.println("1~합 : "+sum);
 		
 ////	for (int i=1; sum=0; i<=100; i++) {
 ////}
