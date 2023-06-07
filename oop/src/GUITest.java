@@ -26,10 +26,10 @@ public class GUITest {
 	private JFrame fr;
 	private JButton bt;
 	private JTextField tf;
-	
+
 	class Handler implements  ActionListener{
 		public void actionPerformed(ActionEvent e){
-//			System.out.println("클릭");
+			//			System.out.println("클릭");
 			String line = tf.getText();
 			System.out.println(line);
 		}
@@ -43,15 +43,25 @@ public class GUITest {
 		c.add(tf);//컴포넌트 추가
 		c.add(bt);//컴퍼넌트 추가
 		//4)이벤트소스와 이벤트핸들러 연결
-//		bt.addActionListener( new MyHandler(tf) );
-		bt.addActionListener( new Handler() );
-		
+		//		bt.addActionListener( new MyHandler(tf) );
+		//		bt.addActionListener( new Handler() );
+//		bt.addActionListener(
+//				new ActionListener() { //추상클래스는 구체화되지 못하기에 뉴 키워드로 객체 생성 불가
+//					public void actionPerformed(ActionEvent e){
+//						//				System.out.println("클릭");
+//						String line = tf.getText();
+//						System.out.println(line);
+//					}
+//				} //이름 없는 클래스 (익명클래스)타입의 객체 생성
+//					);
+		bt.addActionListener((e)->{
+			String line = tf.getText();
+			System.out.println(line);
+		});
 		fr.setSize(300,200);//프레임크기지정
 		fr.setVisible(true);//프레임보여주기
 	}
 	public static void main(String[] args) {
 		new GUITest();
-
 	}
-
 }

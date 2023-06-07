@@ -1,4 +1,7 @@
 package com.my.product.dto;
+
+import java.util.Objects;
+
 public class Product{
 	private String prodNo; //comment(주석)상품번호
 	private String prodName; //상품이름
@@ -11,7 +14,7 @@ public class Product{
 		this.prodPrice = prodPrice;
 	}
 	public void print() {
-		
+		System.out.println("상품번호:"+prodNo+"상품이름:"+prodName+"상품가격:"+prodPrice);
 	}
 	public String getProdNo() {
 		return prodNo;
@@ -35,4 +38,35 @@ public class Product{
 	public void setProdPrice(int prodPrice) {
 		this.prodPrice = prodPrice;
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(prodNo);
+	}
+	@Override
+	/**
+	 * @param obj 상품객체
+	 * @return 현재객체의 상품번호와 obj객체의 상품 상품번호가 같으면 true 반환
+	 * 			그외는 false 반환
+	 *			ex) equals(new String()); 결과는 false
+	 *			ex) equals (null); 결과는 false
+	 */
+	public boolean equals(Object obj) {
+//		if(!(obj instanceof Product)) {//obj 참조변수는 product type의 객체인가?
+//			return false;
+//		}
+//		Product p = (Product)obj;
+//		if(this.prodNo == null || p == null) { //null 포인트 exception 이 발생하지 않도록 필터링
+//			return false;
+//		}
+//		return this.prodNo.equals(p.prodNo); 
+//		//return false;
+		if(obj != null && obj instanceof Product) {
+			Product p = (Product)obj;
+			if(this.prodNo !=null) {
+				return this.prodNo.equals(p.prodNo);
+			}
+		}
+		return false;
+	}
+	
 }

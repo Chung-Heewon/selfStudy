@@ -17,6 +17,7 @@ class Circle extends Shape{
 			System.out.println("반지름은 0보다 커야합니다");
 		}
 	}
+	@Override
 	void make() {
 		this.area = Math.PI * Math.pow(radius, 2);
 	}

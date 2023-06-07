@@ -1,31 +1,47 @@
+import java.util.List;
 import java.util.Scanner;
 
+import com.my.exception.AddException;
+import com.my.exception.FindException;
 import com.my.product.dao.ProductRepository;
 import com.my.product.dto.Product;
 
 public class ProductUser{
 	static Scanner sc = new Scanner(System.in);
-	ProductRepository repository = new ProductRepository(10);
+	ProductRepository repository = new ProductRepository();
 	
 	public void findAll(){// 키보드로 값을 입력받아서 전달하기 위한 용도 (검색하여 전달하는 역할)
 		System.out.println(">>전체상품검색<<");
-		Product[]resultArr = repository.selectAll();//실제로 자료에 있는 정보들을 검색 (저장소의 역할)
-		for(int i=0; i<resultArr.length; i++) {
-			resultArr[i].print();
-		}
+		List<Product> resultList;
+		try {
+			resultList = repository.selectAll();
+			
+			for(int i=0; i<resultList.size(); i++) {
+				resultList.get(i).print();
+			}
+		} catch (FindException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			e.printStackTrace();
+		}//실제로 자료에 있는 정보들을 검색 (저장소의 역할)
 	}
 	public void findByProdNo() {
 		System.out.println(">>상품검색<<");
 		System.out.print("상품번호를 입력하세요:");
 		String noArg1 = sc.nextLine();//키보드로 입력받기
-		System.out.println(noArg1);
-		System.out.println(repository.selectByProdNo(noArg1) == null? "상품이 없습니다": "상품이 있습니다");
-		Product p = repository.selectByProdNo(noArg1);
-		if(p !=null){
-			p.print();
-		}
+		System.out.print(noArg1);
+		Product p;
+			try {
+				System.out.println(repository.selectByProdNo(noArg1) == null? "상품이 없습니다": "상품이 있습니다");
+			} catch (FindException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	public void add() {
+		String a = "suwan";
+				a.charAt(1);
+		
 		System.out.println(">>상품추가<<");
 		System.out.print("상품번호를 입력하세요:");
 		String prodNo = sc.nextLine();
@@ -34,15 +50,24 @@ public class ProductUser{
 		System.out.println("상품가격을 입력하세요 : ");
 		int prodPrice = Integer.parseInt(sc.nextLine());
 		Product pArg = new Product(prodNo, prodName, prodPrice);
-		repository.insert(pArg);
+		try {
+			repository.insert(pArg);
+		} catch (AddException e) {
+			e.printStackTrace();
+		}
 	}
 	public void findByProdName() {
 		System.out.println(">>상품이름으로 검색<<");
 		System.out.println(">>단어를 입력하세요. 단어를 포함한 상품명으로 검색합니다.<<");
 		String word = sc.nextLine();//키보드로 입력받기
-		Product[]pArr = repository.selectByProdName(word);
-		for(Product p : pArr) {
-			p.print();
+		List<Product> pList;
+		try {
+			pList = repository.selectByProdName(word);
+			for(Product p : pList) {
+				p.print();
+			}
+		} catch (FindException e) {
+			e.printStackTrace();
 		}
 	}
 	public static void main(String[] args){

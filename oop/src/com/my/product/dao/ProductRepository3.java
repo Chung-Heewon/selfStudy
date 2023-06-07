@@ -7,11 +7,11 @@ import com.my.exception.FindException;
 import com.my.exception.RemoveException;
 import com.my.product.dto.Product;
 
-public class ProductRepository{
+public class ProductRepository3{
 	//private Product[] pArr; //참조형 product 배열타입, 자동초기화
 	//private int totalCnt = 0; //저장소에 저장된 상품수, 자동초기화(0값이 없어도 자동초기화: 0)
 	private List<Product> pList;
-	public ProductRepository() {
+	public ProductRepository3() {
 		pList = new ArrayList<>();}
 
 	/**
@@ -22,10 +22,12 @@ public class ProductRepository{
 	 */
 	public void insert(Product p)throws AddException{ //매개변수
 
-		for(Product savedP : pList) {
-			//if(savedP.getProdNo().equals(p.getProdNo())){
-			if(savedP.equals(p)) { // Product쪽에 equals 오버라이드해서 상품번호가 서로같으면 true를 반환하도록 만들어줘야한다. 
-				throw new AddException("이미 존재하는 상품입니다.");
+		for(int i=0; i<pList.size(); i++) { 
+			Product p1 = pList.get(i);//저장소의 상품
+			String p1ProdNo = p1.getProdNo(); //저장소의 상품의 상품번호
+			String pProdNo = p.getProdNo();//저장하려는 상품의 상품번호
+			if(p1ProdNo.equals(pProdNo)){
+				throw new AddException("이미 존재하는 상품입니다");
 			}
 		}
 		pList.add(p);
