@@ -45,7 +45,7 @@ public class ProductUser{
 		System.out.println(">>상품추가<<");
 		System.out.print("상품번호를 입력하세요:");
 		String prodNo = sc.nextLine();
-		System.out.println("상품명을 입력하세요");
+		System.out.println("상품명을 입력하세요:");
 		String prodName = sc.nextLine();
 		System.out.println("상품가격을 입력하세요 : ");
 		int prodPrice = Integer.parseInt(sc.nextLine());

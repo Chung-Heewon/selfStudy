@@ -1,11 +1,12 @@
 package com.my.product.dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Product{
+public class Product implements Serializable{ //직렬화
 	private String prodNo; //comment(주석)상품번호
 	private String prodName; //상품이름
-	private int prodPrice; //상품가격
+	transient private int prodPrice; //상품가격 //직렬화에서 제외
 	public Product() {
 	}
 	public Product(String prodNo, String prodName, int prodPrice) {
@@ -67,6 +68,10 @@ public class Product{
 			}
 		}
 		return false;
+	}
+	@Override
+	public String toString() {
+		return "Product [prodNo=" + prodNo + ", prodName=" + prodName + ", prodPrice=" + prodPrice + "]";
 	}
 	
 }
