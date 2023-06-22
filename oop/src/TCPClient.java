@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
@@ -20,12 +21,12 @@ public class TCPClient {
 			s = new Socket(serverIP, serverport);
 			os = s.getOutputStream();
 			dos = new DataOutputStream(os);
-			
-		
+
+
 			//String sendMsg = "안녕하세요!!!!!!!!!";
 			//os.write(sendMsg.getBytes());//("UTF-8"));
 			//os.write(65);
-			
+
 			//키보드로 quit문자열까지 서버로 send 반복한다
 			//선생님이 하신것
 			String sendMsg;
@@ -33,25 +34,36 @@ public class TCPClient {
 				sendMsg = sc.nextLine();
 				dos.writeUTF(sendMsg);
 			}while(!sendMsg.equals("quit"));
-			
+
 			//내가한것
-//			while(true) {
-//				String sendMsg = sc.nextLine();
-//				if(sendMsg.equals("quit")) {
-//					dos.writeUTF(sendMsg);
-//					break;
-//				}else {
-//					dos.writeUTF(sendMsg);
-//				}
-//			}
-		} catch (UnknownHostException e) {
+			//			while(true) {
+			//				String sendMsg = sc.nextLine();
+			//				if(sendMsg.equals("quit")) {
+			//					dos.writeUTF(sendMsg);
+			//					break;
+			//				}else {
+			//					dos.writeUTF(sendMsg);
+			//				}
+			//			}
+		}catch (UnknownHostException e) {
 		}catch(ConnectException e) {
-		System.out.println("서버를 찾지 못했습니다.");
+			System.out.println("서버를 찾지 못했습니다.");
 			e.printStackTrace();
+		}catch (SocketException e) {
+			System.out.println("서버와 연결이 해제되었습니다.");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-	}
+		}finally {
+			if(s !=null) {
+				try{
+					s.close();
 
+				}catch (IOException e) {
+
+				}
+
+			}
+
+		}
+	}
 }

@@ -43,7 +43,7 @@ public class TCPServer {
 				}catch (IOException e) {
 					e.printStackTrace();
 				}finally {
-					System.out.println("클라이언트"+clientAddress+"접속해제");
+					System.out.println("클라이언트"+clientAddress+" 접속해제");
 					if(s !=null) {
 						try {
 							s.close();

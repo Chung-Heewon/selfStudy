@@ -50,6 +50,7 @@ class First extends Thread{
 	@Override
 	public void run() {
 		//스레드가 할 일
+		
 		String tName = Thread.currentThread().getName();
 		for(int i=1; i<=100; i++) {
 			System.out.println(tName + ":"+i);
