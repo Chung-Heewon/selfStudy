@@ -2,7 +2,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import my.com.mango.sql.Search;
+import com.mangoplate.user.SearchUser;
 
 public class FoodStoreMode {
 	
@@ -25,8 +25,9 @@ public class FoodStoreMode {
 				 * 음식점모드에서 메뉴관련 메소드 넣기
 				 */
 			}else if(FSMM==3) {
-				Search s = new Search();
+				SearchUser s = new SearchUser();
 				s.doSearch();
+				
 			}else {
 				System.out.println("숫자를 잘못 입력하셨습니다.");
 				System.out.println("숫자를 다시 입력하세요!");

@@ -1,4 +1,4 @@
-package my.com.mango.sql;
+package com.mangoplate.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,38 +6,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MangoPlateConnection {
-	public static Connection getConnection()
-			throws ClassNotFoundException,SQLException{		
+public class MangoplateConnection {
+	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("oracle.jdbc.OracleDriver");
-		Connection conn=null;
+		Connection conn = null;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "mangoplate";
 		String password = "mp";
 
 		conn = DriverManager.getConnection(url, user, password);
-//		System.out.println("DB와 연결성공");
+//		System.out.println("DB와 연결 성공");
 		return conn;
 	}
+
 	public static void close(ResultSet rs, Statement stmt, Connection conn) {
-		if(rs!=null) {
+		if (rs != null) {
 			try {
 				rs.close();
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 			}
 		}
-		if(stmt!=null) {
+		if (stmt != null) {
 			try {
 				stmt.close();
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 			}
 		}
-		if(conn !=null) {
+		if (conn != null) {
 			try {
 				conn.close();
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 			}
 		}
 	}
 }
-
