@@ -1,0 +1,114 @@
+*{
+    box-sizing: border-box;
+  
+
+}
+header{
+    border:1px solid; 
+    background-color: #f6f5ef;
+    width: 100%;
+    height: 69px;
+    left: 0;
+    position : fixed;
+    top: 0;
+}
+header>h1{
+    height: 45px;
+    /*left: 10px;
+    position: ;
+    top: 13px;*/
+    float: left;
+    width: 45px;
+
+}    
+header>h1>a.logo{
+    background-image: url('../images/logo.png');
+    background-repeat: no-repeat;
+    background-size: 45px auto;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    text-indent: -20000px;
+    width: 100%;
+}
+header>nav{
+    float: right;
+    width: 70%;
+}
+header>nav>ul{
+    padding-left: 0px;
+    list-style-type: none;
+}
+header>nav>ul>li{
+    display:inline-block;
+    width: 15%;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+header>nav>ul>li:hover{
+    background-color: olive;
+    cursor: pointer;
+}
+header>nav>ul>li>a{
+    text-decoration: none;
+}
+section{
+    background-color: #00704a;
+    height: 500px;
+    width: 100%;
+    /*position: relative;
+    left:0;
+    top: 70px;*/
+    margin-top: 100px;
+}
+section>div{
+    /*background-color: aquamarine;*/
+    height:90%;
+    float: left;
+    width:100%;
+}
+
+section>div>article:first-child{
+    border: 1px solid;
+    background-color: #d5b192;
+    height: 80%;
+    width: 100%;
+}
+section>div>article:last-child{
+    border: 1px solid;
+    background-color: beige;
+    height: 30%;
+    float: left;
+    width: 100%;
+}
+section>aside{
+    background-color: azure;
+    height: 90%;
+    float: right;
+    width: 20%;
+}
+footer{
+   background-color: #2C2A29;color: #fff;
+   text-align: center;
+}
+footer>ul{
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px auto;
+    width: 50%;
+    text-align: center;
+}
+footer>span{
+    background-color: darkolivegreen;
+   /* display: block; /*inline의 역할이면서 크기지정이 가능해진다*/
+    /*margin-top: 40px;
+    margin: 0px auto;
+    width: 80%;*/
+    display: inline-block; /*inline의 역할이면서 크기지정이 가능해진다*/
+    margin-top: 40px;
+    margin: 0px auto;
+    width: 80%;
+    text-align : center;
+}
+

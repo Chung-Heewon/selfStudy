@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin:auto
+}
+form.signup{
+    overflow:auto;
+    width: 50%;
+}
+
+form.signup>label{
+    float: left;
+}
+
+form.signup>input,form.signup>button{
+    display: inline-block;
+    width: 100%;
+}
+button.iddupchk{
+    background-color: lightcoral;
+    width: 50%;
+    border: 1px solid;
+}
+form.signup>button.signup{
+    background-color: green;
+    width : 50%;
+    border: 1px solid;
+    display : none;
+}

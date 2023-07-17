@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
+/*name 속성값이 id인 요소*/
+form.login>input[name=id],form.login>input[name=pwd] {
+    width: 100%;
+}
+form.login>span{
+    background-color: yellow;
+}
+
+@media screen and (max-width:500px){
+    form.login>span{
+        display:block;
+    }
+}
