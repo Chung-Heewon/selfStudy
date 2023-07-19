@@ -32,6 +32,12 @@ $(() => {
             case `${backURL}/productlist`:
                 location.href= `${backURL}/productlist`
                 break
+            case `${backURL}/cartlist`:
+				showAjax($(e.target).attr('href'), sectionObj)
+				break
+			case `${backURL}/orderlist`:
+				showAjax($(e.target).attr('href'), sectionObj)
+				break
         }
         return false
     });

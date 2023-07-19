@@ -1,13 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="../css/login.css">
+    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+    <link rel="stylesheet" href="<c:out value="${contextPath}"/>/css/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="../js/loginjq.js"></script>
+    <script src="<c:out value="${contextPath}"/>/js/loginjq.js"></script>
 </head>
 
 <body>

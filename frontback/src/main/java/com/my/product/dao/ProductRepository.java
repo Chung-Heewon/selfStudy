@@ -12,6 +12,40 @@ import com.my.product.dto.Product;
 import com.my.sql.MyConnection;
 
 public class ProductRepository {
+	
+	public Product selectByProdNo(String prodNo)throws FindException {
+		Connection conn = null;
+		try {
+			conn = MyConnection.getConnection();//1~2
+		}catch(ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			throw new FindException("DB와의 연결이 실패"+e.getMessage());
+		}
+			//2. SQL구문 송신
+			PreparedStatement pstmt=null;
+			//3.SQL 구문 수신
+			ResultSet rs = null;
+			try {
+				String selectSQL ="SELECT * "
+								+ "FROM product "
+								+ "WHERE prod_no=?";
+				pstmt= conn.prepareStatement(selectSQL);
+				pstmt.setString(1,  prodNo);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					//list.add(rs.getString("prod_no"));
+					 return new Product(rs.getString("prod_no"),
+											rs.getString("prod_name"),
+											rs.getInt("prod_price"));
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+				//throw new FindException("상품검색 실패 : "+e.getMessage());
+			}finally {
+				MyConnection.close(rs, pstmt, conn);
+			}
+			return null;
+		}
 	public int count() throws FindException{
 		//1.DB와의 연결
 		Connection conn = null;

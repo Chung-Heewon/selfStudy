@@ -40,7 +40,7 @@
 	
 %>
 	<div class="productlist">
-		<%for(Product p : pb.getList()){
+		<%for(Product p : pb.getList()){ 
 %>
 		<div class="product <%=p.getProdNo()%>">
 			<ul>

@@ -20,7 +20,8 @@ public class IdDupChkServlet extends HttpServlet {
 	private CustomerService service;
 
 	public IdDupChkServlet() {
-		service = new CustomerService ();
+		//service = new CustomerService ();
+		service = CustomerService.getInstance();
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id =  request.getParameter("id");

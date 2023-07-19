@@ -6,11 +6,16 @@ import com.my.exception.AddException;
 import com.my.exception.FindException;
 
 public class CustomerService {
+	private static CustomerService service = new CustomerService();
 	private CustomerRepository repository;
-	public CustomerService() {
+	
+	private CustomerService() {
 		repository = new CustomerRepository();
 	}
 
+	public static CustomerService getInstance() {
+		return service;
+	}
 	public void signup(Customer c) throws AddException{
 		
 		try {

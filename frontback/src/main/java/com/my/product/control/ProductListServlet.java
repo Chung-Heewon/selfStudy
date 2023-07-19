@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.my.exception.FindException;
-import com.my.product.service.ProductService;
 import com.my.util.PageBean;
 
 @WebServlet("/productlist")
@@ -18,7 +17,8 @@ public class ProductListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductService service;
 	public ProductListServlet(){
-		service = new ProductService();
+		//service = new ProductService();
+		service = ProductService.getInstance();
 
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

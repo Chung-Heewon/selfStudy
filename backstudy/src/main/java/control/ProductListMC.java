@@ -18,8 +18,9 @@ import com.my.product.service.ProductService;
 
 public class ProductListMC extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	List<String> products;
 	private ProductService service;
+	
 	public ProductListMC() {
 		service = new ProductService();
 	}
@@ -38,11 +39,11 @@ public class ProductListMC extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		List<String> list;
-		try {
+		try { // 정상처리인 경우에는 상품목록으로 보여진다. 
 			list = service.findAll(currentPage);
 			String jsonStr = mapper.writeValueAsString(list);
 			out.print(jsonStr);
-		} catch (FindException e) {
+		} catch (FindException e) { //비정상처리인경우에는 findExcpetion이 에러문자를 보여지게 된다. 
 			String msg = e.getMessage();
 			Map<String, String> map = new HashMap<>();
 			map.put("msg", msg);

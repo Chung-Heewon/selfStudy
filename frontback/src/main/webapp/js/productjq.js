@@ -3,7 +3,8 @@ const prodNo = location.search.substring(1).split('=')[1] //product.html?prodNo=
                                                           //==>substring(1)결과 : prodNo=C0001 
                                                           //==>split('=')결과 : [0]는 prodNo [1]는 C0001
 
-$(()=>{
+
+/*$(()=>{
     //상품번호
     const prodNo = sessionStorage.getItem('prodNo')
     $.ajax({
@@ -24,4 +25,15 @@ $(()=>{
     })
     //상품이미지는 상품번호이미지로 변경
     $('div.product_view>div.product_view_pic>img').attr('src', `../images/${prodNo}.jpg`)
-})
+    */
+$('button.addtocart').click(()=>{
+	const prodNo = $('span.prodNo').html()
+	const qt = $('input[name=qt').val()
+	$.ajax({
+		url : `${backURL}/addtocart`,
+		data:`prodNo=${prodNo}&qt=${qt}`,
+		success:()=>{
+			location.href=`${backURL}/productlist`
+		}
+	})
+	})

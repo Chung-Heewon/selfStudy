@@ -19,3 +19,10 @@ _jspService()의 지역변수 i=<%=i %><br>
 멤버변수 i=<%=this.i %>
 </body>
 </html>
+
+<hr>
+<h3>include 지시자를 이요한 포함</h3>
+<%@include file ="./html/lifecycle.html" %>
+<hr>
+<h3>include태그를 이용한 포함</h3>
+<jsp:incldue page="./html/lifecycle.html"></jsp:incldue>jsp:include>

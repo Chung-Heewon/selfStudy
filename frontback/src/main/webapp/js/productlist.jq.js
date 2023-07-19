@@ -21,7 +21,7 @@ $(() => {
 		   url:`${backURL}/product`,
 		   method:'get',
 		   data: `prodNo=${prodNo}`,
-		   success:()=>(responseData)=>{
+		   success:(responseData)=>{
 			   $('section').empty()
 			   $('section').html(responseData)
 		   }
@@ -38,5 +38,5 @@ $(() => {
 		//alert(pageNo+"페이지를 요청합니다")
 		location.href=`${backURL}/productlist?cp=${pageNo}`
 	})
-})
+	})
     //div.product객체가 만들어졌을때, 상품등록을 미리해놓을 수 있다. 
